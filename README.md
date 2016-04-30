@@ -14,6 +14,15 @@ Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
 ./empire --headless --port 1337 --username enter_username --password enter_password
 
 
+# Important
+
+
+CSRF protection has not been implemented because it was affecting the working of Empire Web. It will be implemented in the next release.
+
+
+Stay Calm. Stay Secure. Contribute :)
+
+
 # Screenshots
 
 
