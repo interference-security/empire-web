@@ -1,7 +1,7 @@
 # PowerShell Empire Web
 
 
-PowerShell Empire Web Interface
+PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/PowerShellEmpire/Empire/wiki/RESTful-API). It is a web interface for using [PowerShell Empire](https://github.com/PowerShellEmpire/Empire/).
 
 
 
@@ -11,7 +11,7 @@ PowerShell Empire Web Interface
 Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
 
 
-./empire --headless --port 1337 --username enter_username --password enter_password
+./empire --headless --restport <port> --username <empire_username> --password <empire_password>
 
 
 # Important
