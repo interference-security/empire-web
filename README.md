@@ -11,7 +11,7 @@ PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/P
 Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
 
 
-./empire --headless --restport <port> --username <empire_username> --password <empire_password>
+./empire --headless --restport port --username empire_username --password empire_password
 
 
 # Important
