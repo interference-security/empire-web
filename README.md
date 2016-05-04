@@ -21,26 +21,28 @@ PHP Curl should be installed to use Empire Web.
 
 ## Install PHP Curl
 
-...
+```
 sudo apt-get install php5-curl
-...
+```
 
 
 ## To check for PHP Curl
 
-...
+Command Line:
+```
 root@kali:~# php -i | grep -i curl
 /etc/php5/cli/conf.d/20-curl.ini,
 curl
 cURL support => enabled
 cURL Information => 7.47.0
-...
+```
 
-...
+PHP Script:
+```
 <?php
 echo (function_exists('curl_version') ? "Curl found": "Curl not found");
 ?>
-...
+```
 
 
 # Important
