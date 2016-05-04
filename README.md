@@ -4,7 +4,6 @@
 PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/PowerShellEmpire/Empire/wiki/RESTful-API). It is a web interface for using [PowerShell Empire](https://github.com/PowerShellEmpire/Empire/).
 
 
-
 # Run Empire REST API Server
 
 
@@ -12,6 +11,36 @@ Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
 
 
 ./empire --headless --restport port --username empire_username --password empire_password
+
+
+# Requirements
+
+
+PHP Curl should be installed to use Empire Web.
+
+
+## Install PHP Curl
+
+...
+sudo apt-get install php5-curl
+...
+
+
+## To check for PHP Curl
+
+...
+root@kali:~# php -i | grep -i curl
+/etc/php5/cli/conf.d/20-curl.ini,
+curl
+cURL support => enabled
+cURL Information => 7.47.0
+...
+
+...
+<?php
+echo (function_exists('curl_version') ? "Curl found": "Curl not found");
+?>
+...
 
 
 # Important
