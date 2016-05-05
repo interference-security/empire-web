@@ -79,7 +79,7 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == "post")
         if(array_key_exists($arr_data["StagerName"], $arr_result))
         {
             $temp_stager_name = $arr_data["StagerName"];
-            $empire_gen_stager .= "<div class='panel panel-success'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' href='#collapse1'><span class='glyphicon glyphicon-star'></span> Stager Output</a></h4></div><div id='collapse1' class='panel-collapse collapse'><div class='panel-body'><pre style='display: block; padding: 9.5px; margin: 0 0 10px; font-size: 13px; line-height: 1.42857143; color: #333; word-break: break-all; word-wrap: break-word; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;'><code id='stager-output-field'>".$arr_result[$temp_stager_name]['Output']."</code></pre></div><div class='panel-footer'><button type='button' id='decode-b64-stager-output' class='btn btn-warning btn-sm' onclick='decodeStagerBase64()'>Click</button> to decode Base64 stager output.</div></div></div><br>";
+            $empire_gen_stager .= "<div class='panel panel-success'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' href='#collapse1'><span class='glyphicon glyphicon-star'></span> Stager Output</a> <button type='button' id='decode-b64-stager-output' class='btn btn-warning btn-xs' onclick='decodeStagerBase64()'><span class='glyphicon glyphicon-retweet'></span> Decode</button>&nbsp;&nbsp;<a href='#' id='downloadLink' class='btn btn-info btn-xs' style='color:white;' onclick='downloadStagerOutput()'><span class='glyphicon glyphicon-download-alt'></span> Download</a></h4></div><div id='collapse1' class='panel-collapse collapse'><div class='panel-body'><pre style='display: block; padding: 9.5px; margin: 0 0 10px; font-size: 13px; line-height: 1.42857143; color: #333; word-break: break-all; word-wrap: break-word; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;'><code id='stager-output-field'>".$arr_result[$temp_stager_name]['Output']."</code></pre></div></div></div><br>";
             $empire_gen_stager .= "<table class='table table-hover table-striped table-bordered'><thead><tr><th>Name</th><th>Description</th><th>Required</th><th>Value</th></tr></thead><tbody>";
             foreach($arr_result[$temp_stager_name] as $key => $value)
             {
@@ -134,6 +134,16 @@ else
     {
         var stager_decoded = Base64.decode(document.getElementById("stager-output-field").innerHTML);
         document.getElementById("stager-output-field").innerHTML = stager_decoded;
+    }
+    function downloadStagerOutput()
+    {
+        var fileName = 'stager-output.ext'; //To be replaced with user supplied name in future
+        var stagerOutput = document.getElementById("stager-output-field").innerHTML;
+        var link = document.createElement('a');
+        mimeType = 'application/octet-stream';
+        link.setAttribute('download', fileName);
+        link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(stagerOutput));
+        link.click(); 
     }
     </script>
 </head>
