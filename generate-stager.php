@@ -132,7 +132,7 @@ else
     <script>
     function decodeStagerBase64()
     {
-        var stager_decoded = Base64.decode(document.getElementById("stager-output-field"));
+        var stager_decoded = Base64.decode(document.getElementById("stager-output-field").innerHTML);
         document.getElementById("stager-output-field").innerHTML = stager_decoded;
     }
     </script>
