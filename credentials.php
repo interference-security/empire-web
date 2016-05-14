@@ -11,28 +11,56 @@ if(array_key_exists("error", $arr_result))
 }
 else
 {
-    if(!empty($arr_result))
+    if(is_array($arr_result))
     {
-        $empire_credentials .= '<table class="table table-hover table-striped"><thead><tr>';
-        foreach($arr_result["creds"][0] as $key => $value)
+        if(!empty($arr_result))
         {
-            $empire_credentials .= '<th>'.htmlentities($key).'</th>';
-        }
-        for($i=0; $i<sizeof($arr_result["creds"]); $i++)
-        {
-            $empire_credentials .= "<tr>";
-            foreach($arr_result["creds"][$i] as $key => $value)
+            $empire_credentials .= '<table class="table table-hover table-striped"><thead><tr>';
+            if(array_key_exists("creds",$arr_result))
             {
-                $value = htmlentities($value);
-                $empire_credentials .= "<td>$value</td>";
+                if(sizeof($arr_result["creds"])>0)
+                {
+                    foreach($arr_result["creds"][0] as $key => $value)
+                    {
+                        $empire_credentials .= '<th>'.htmlentities($key).'</th>';
+                    }
+                    for($i=0; $i<sizeof($arr_result["creds"]); $i++)
+                    {
+                        $empire_credentials .= "<tr>";
+                        foreach($arr_result["creds"][$i] as $key => $value)
+                        {
+                            $value = htmlentities($value);
+                            $empire_credentials .= "<td>$value</td>";
+                        }
+                        $empire_credentials .= "</tr>";
+                    }
+                    $empire_credentials .= '</tbody></table>';
+                }
+                else
+                {
+                    $empire_credentials = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> No credentials found.</div>";
+                }
             }
-            $empire_credentials .= "</tr>";
+            else
+            {
+                $empire_credentials = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
+            }
         }
-        $empire_credentials .= '</tbody></table>';
+        else
+        {
+            $empire_credentials = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
+        }
     }
     else
     {
-        $empire_credentials = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
+        if(!empty($arr_result))
+        {
+            $empire_credentials = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> ".ucfirst(htmlentities($arr_result["error"]))."</div>";
+        }
+        else
+        {
+            $empire_credentials = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
+        }
     }
 }
 ?>
