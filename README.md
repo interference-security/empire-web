@@ -13,6 +13,12 @@ Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
 ./empire --headless --restport port --username empire_username --password empire_password
 ```
 
+## Authentication Failed Bug
+
+If you are unable to authenticate to Empire Web, most likely it is due to a bug in Empire and not "Empire Web". Please refer the pull request here: https://github.com/adaptivethreat/Empire/pull/329
+
+You can fix it by making the changes mentioned here: https://github.com/adaptivethreat/Empire/pull/329/commits/9bbcb0d7ce11adfad7ae500d63e91b9950d74150
+
 # Requirements
 
 
