@@ -1,13 +1,13 @@
 # PowerShell Empire Web
 
 
-PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/PowerShellEmpire/Empire/wiki/RESTful-API). It is a web interface for using [PowerShell Empire](https://github.com/PowerShellEmpire/Empire/).
+PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/EmpireProject/Empire/wiki/RESTful-API). It is a web interface for using [PowerShell Empire](https://github.com/EmpireProject/Empire/).
 
 
 # Run Empire REST API Server
 
 
-Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
+Get PowerShell Empire: https://github.com/EmpireProject/Empire
 
 ```
 ./empire --headless --restport port --username empire_username --password empire_password
@@ -15,9 +15,9 @@ Get PowerShell Empire: https://github.com/PowerShellEmpire/Empire
 
 ## Authentication Failed Bug
 
-If you are unable to authenticate to Empire Web, most likely it is due to a bug in Empire and not "Empire Web". Please refer the pull request here: https://github.com/adaptivethreat/Empire/pull/329
+If you are unable to authenticate to Empire Web, most likely it is due to a bug in Empire and not "Empire Web". Please refer the pull request here: https://github.com/EmpireProject/Empire/pull/329
 
-You can fix it by making the changes mentioned here: https://github.com/adaptivethreat/Empire/pull/329/commits/9bbcb0d7ce11adfad7ae500d63e91b9950d74150
+You can fix it by making the changes mentioned here: https://github.com/EmpireProject/Empire/pull/329/commits/9bbcb0d7ce11adfad7ae500d63e91b9950d74150
 
 # Requirements
 
