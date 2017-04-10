@@ -6,6 +6,8 @@ php:
   - '7.0'
   - '7.1'
 
+script: phpunit index.php
+
 notifications:
     on_success: always
     on_failure: always
