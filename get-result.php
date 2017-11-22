@@ -18,10 +18,10 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == 'post')
             {
                 if(sizeof($arr_result["results"])>0)
                 {
-                    if(array_key_exists("agentname", $arr_result["results"][0]) && array_key_exists("results", $arr_result["results"][0]))
+                    if(array_key_exists("AgentName", $arr_result["results"][0]) && array_key_exists("AgentResults", $arr_result["results"][0]))
                     {
-                        $val_agent_name = htmlentities($arr_result["results"][0]["agentname"]);
-                        $val_agent_results = htmlentities($arr_result["results"][0]["results"]);
+                        $val_agent_name = htmlentities($arr_result["results"][0]["AgentName"]);
+                        $val_agent_results = str_replace("\\r\\n", "<br>", print_r($arr_result["results"][0]["AgentResults"][0], true));
                         $val_agent_results = (strlen($val_agent_results)>0 ? $val_agent_results : "No results");
                         $empire_show_agent_results .= "<pre style='display: block; padding: 9.5px; margin: 0 0 10px; font-size: 13px; line-height: 1.42857143; color: #333; word-break: break-all; word-wrap: break-word; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;'><code>$val_agent_results</code></pre>";
                     }
