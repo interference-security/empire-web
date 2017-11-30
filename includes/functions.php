@@ -311,6 +311,10 @@ function show_agent_results($empire_ip, $empire_port, $empire_session_token, $ag
     return $arr_result;
 }
 
+function show_agent_screenshots($empire_ip, $empire_port, $empire_session_token, $agent_name) {
+    
+}
+
 function delete_agent_results($empire_ip, $empire_port, $empire_session_token, $agent_name)
 {
     $ch = curl_init("https://$empire_ip:$empire_port/api/agents/$agent_name/results?token=$empire_session_token");
