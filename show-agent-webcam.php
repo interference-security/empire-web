@@ -15,7 +15,7 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == 'post')
 		$arr_result = show_agent_results($sess_ip, $sess_port, $sess_token, $agent_name);
 
 		$webcam_location = get_configuration($sess_ip, $sess_port, $sess_token)['config'][0]['install_path'] . 'downloads/' . $agent_name . '/WebcamRecorder/';
-		if ($sess_ip == "127.0.0.2") {
+		if ($sess_ip == "127.0.0.1") {
 			if(file_exists($webcam_location)) {
 				$webcams = glob($webcam_location . "*.avi");
 				$local_location = "video/" . $agent_name . "/";
