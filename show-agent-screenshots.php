@@ -1,9 +1,11 @@
 <?php
+
 // include files
 require_once("includes/check-authorize.php");
 require_once("includes/functions.php");
 
-$empire_show_agent_results = "";
+
+$screenshots_results = "";
 if(strtolower($_SERVER['REQUEST_METHOD']) == 'post')
 {
 	if(isset($_POST['agent_name']) && strlen($_POST['agent_name'])>0)
@@ -11,44 +13,23 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == 'post')
 		$agent_name = html_entity_decode(urldecode($_POST['agent_name']));
 		$arr_result = show_agent_results($sess_ip, $sess_port, $sess_token, $agent_name);
 
-		$agent_location = get_configuration($sess_ip, $sess_port, $sess_token)['config'][0]['install_path'] . 'downloads/';
-		if ($sess_ip == "127.0.0.1") {
-			if(!empty($arr_result))
-			{
-				if(array_key_exists("results",$arr_result))
-				{
-					if(sizeof($arr_result["results"])>0)
-					{
-						if(array_key_exists("AgentName", $arr_result["results"][0]) && array_key_exists("AgentResults", $arr_result["results"][0]))
-						{
-							$val_agent_name = htmlentities($arr_result["results"][0]["AgentName"]);
-							$val_agent_results = str_replace("\\r\\n", "<br>", print_r($arr_result["results"][0]["AgentResults"][0], true));
-							$val_agent_results = (strlen($val_agent_results)>0 ? $val_agent_results : "No results");
-							$empire_show_agent_results .= "<div class='panel panel-success'><div class='panel-heading'>Agent $val_agent_name Results</div><div class='panel-body'><pre style='display: block; padding: 9.5px; margin: 0 0 10px; font-size: 13px; line-height: 1.42857143; color: #333; word-break: break-all; word-wrap: break-word; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;'><code>$val_agent_results</code></pre></div></div>";
-						}
-						else
-						{
-							$empire_show_agent_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
-						}
-					}
-					else
-					{
-						$empire_show_agent_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
-					}
+		$screenshot_location = get_configuration($sess_ip, $sess_port, $sess_token)['config'][0]['install_path'] . 'downloads/' . $agent_name . '/screenshot/';
+		if (file_exists($screenshot_location)) {
+			$screenshots = scandir($screenshot_location);
+			unset($screenshots[0]);
+			unset($screenshots[1]);
+			if(!empty($screenshots))
+			{				
+				foreach ($screenshots as $key => $screenshot) {
+					$html_screenshot = "<div class='alert alert-success' >" . $screenshot . "<img style='width:100%' src='data:image/png;base64," . base64_encode(file_get_contents($screenshot_location . $screenshot)). "'></div>";	
+					$screenshots_results = $screenshots_results . $html_screenshot;
 				}
-				elseif(array_key_exists("error",$arr_result))
-				{
-					$empire_show_agent_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> ".ucfirst(htmlentities($arr_result['error']))."</div>";
-				}
-				else
-				{
-					$empire_show_agent_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
-				}
+				
+			} else {
+		    	$screenshots_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> No screenshots.</div>";
 			}
-			else
-			{
-				$empire_show_agent_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
-			}
+		} else {
+		    $screenshots_results = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> No screenshots.</div>";
 		}
 	}
 }
@@ -92,7 +73,7 @@ else
 						<button type="submit" class="btn btn-success">Show Screenshots</button>
 					</form>
 					<br>
-					<?php echo $agent_location; ?>
+					<?php  echo $screenshots_results; ?>
 				</div>
 			</div>
 		</div>

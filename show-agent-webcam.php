@@ -23,26 +23,19 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == 'post')
 					mkdir($local_location, 0774, true);
 				}			
 				foreach ($webcams as $key => $webcam) {
-					// if (substr($webcam_location . $webcam, -strlen('.avi'))==='.avi') {
 						$avi_location = $webcam;
 						$mp4_location = str_replace('.avi', '.mp4', $avi_location);
 						$mp4_location = str_replace($webcam_location, $local_location, $mp4_location);
 						if (!file_exists($mp4_location)) {
 							$webcam_results = shell_exec("ffmpeg -i '" . $avi_location . "' -threads 0 -c:v libx264 -preset slower -crf 19 -qmin 10 -qmax 51 -strict experimental -c:a aac -b:a 128k -y '" . $mp4_location . "'");
 						}
-						$webcam_results = $mp4_location;
-					// }
-
 				}
 				$webcams = glob($local_location . "*.mp4");
 				if (strlen(shell_exec('which ffmpeg')) > 0) {
 					if(!empty($webcams))
 					{					
 						foreach ($webcams as $key => $webcam) {
-							// header("content-type: image/png");
-							// $WebCams_results = readfile($WebCam_location . $WebCam);
 							$html_webcam = "<div class='alert alert-success' >" . $webcam . "<br><video controls><source  type='video/mp4' src='data:video/mp4;base64,". base64_encode(file_get_contents($webcam)). "'></video></div>";	
-							// $html_WebCam = base64_encode(file_get_contents($WebCam_location . $WebCam));
 							$webcam_results = $webcam_results . $html_webcam;
 
 						}
