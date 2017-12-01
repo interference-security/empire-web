@@ -61,7 +61,7 @@ if(!empty($arr_result))
 }
 else
 {
-    $empire_agents = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> Unexpected response.</div>";
+    $empire_agents = "<div class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> 5Unexpected response.</div>";
 }
 ?>
 <!DOCTYPE html>
