@@ -10,7 +10,11 @@ PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/E
 Get PowerShell Empire: https://github.com/EmpireProject/Empire
 
 ```
-./empire --rest --restport port --username empire_username --password empire_password
+./empire --rest --restport <port> --username <empire_username> --password <empire_password>
+```
+For example:
+```
+./empire --rest --restport 1337 --username admin --password 3mpir3adm!n
 ```
 
 # Requirements
