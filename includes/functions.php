@@ -120,9 +120,9 @@ function search_listener_name($empire_ip, $empire_port, $empire_session_token, $
     return $arr_result;
 }
 
-function get_current_listener_options($empire_ip, $empire_port, $empire_session_token)
+function get_current_listener_options($empire_ip, $empire_port, $empire_session_token, $listener_type)
 {
-    $ch = curl_init("https://$empire_ip:$empire_port/api/listeners/options?token=$empire_session_token");
+    $ch = curl_init("https://$empire_ip:$empire_port/api/listeners/options/$listener_type?token=$empire_session_token");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Except:'));
@@ -134,11 +134,11 @@ function get_current_listener_options($empire_ip, $empire_port, $empire_session_
     return $arr_result;
 }
 
-function create_listener($empire_ip, $empire_port, $empire_session_token, $arr_data)
+function create_listener($empire_ip, $empire_port, $empire_session_token, $listener_type, $arr_data)
 {
     $data = $arr_data;
     $data_string = json_encode($data);
-    $ch = curl_init("https://$empire_ip:$empire_port/api/listeners?token=$empire_session_token");
+    $ch = curl_init("https://$empire_ip:$empire_port/api/listeners/$listener_type?token=$empire_session_token");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

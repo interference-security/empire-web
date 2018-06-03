@@ -22,10 +22,36 @@ if(isset($_GET['search_listener']))
             {
                 $key = htmlentities($key);
                 $value = htmlentities($value);
-                $empire_listener .= "<tr><td>$key</td><td>$value</td></tr>";
+                if($key=="options")
+                {
+                    $empire_listeners_detailed .= "<fieldset><legend>Listener Detailed Options</legend>";
+                    $empire_listeners_detailed .= '<table class="table table-hover table-striped table-bordered"><thead><tr><th>Name</th><th>Description</th><th>Required</th><th>Value</th></tr></thead><tbody>';
+                    foreach($arr_result["listeners"][0]["options"] as $key1 => $value1)
+                    {
+                        $empire_listeners_detailed .= "<tr>";
+                        $empire_listeners_detailed .= "<td>".htmlentities($key1)."</td>";
+                        $empire_listeners_detailed .= "<td>".$value1["Description"]."</td>";
+                        if ($value1["Required"] == True)
+                        {
+                            $empire_listeners_detailed .= "<td>Yes</td>";
+                        }
+                        else
+                        {
+                            $empire_listeners_detailed .= "<td>No</td>";
+                        }
+                        $empire_listeners_detailed .= "<td>".htmlentities($value1["Value"])."</td>";
+                        $empire_listeners_detailed .= "</tr>";
+                    }
+                    $empire_listeners_detailed .= '</tbody></table><fieldset>';
+                }
+                else
+                {
+                    $empire_listener .= "<tr><td>$key</td><td>$value</td></tr>";
+                }
             }
             $empire_listener .= '</tbody></table>';
-            $empire_listener .= '</div></div></div>';
+            $empire_listener .= $empire_listeners_detailed;
+            $empire_listener .= "</div></div></div>";
         }
         else
         {

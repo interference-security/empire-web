@@ -3,9 +3,6 @@
 
 PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/EmpireProject/Empire/wiki/RESTful-API). It is a web interface for using [PowerShell Empire](https://github.com/EmpireProject/Empire/).
 
-# Support for Empire 2.0
-This version of Empire Web only works with Empire 1.6. A new version is under development which will support Empire 2.0. Expected release is before end of June 2017. Empire Web Dev: https://github.com/interference-security/empire-web/tree/dev
-
 
 # Run Empire REST API Server
 
@@ -13,14 +10,8 @@ This version of Empire Web only works with Empire 1.6. A new version is under de
 Get PowerShell Empire: https://github.com/EmpireProject/Empire
 
 ```
-./empire --headless --restport port --username empire_username --password empire_password
+./empire --rest --restport port --username empire_username --password empire_password
 ```
-
-## Authentication Failed Bug
-
-If you are unable to authenticate to Empire Web, most likely it is due to a bug in Empire and not "Empire Web". Please refer the pull request here: https://github.com/EmpireProject/Empire/pull/329
-
-You can fix it by making the changes mentioned here: https://github.com/EmpireProject/Empire/pull/329/commits/9bbcb0d7ce11adfad7ae500d63e91b9950d74150
 
 # Requirements
 
@@ -31,7 +22,7 @@ PHP Curl should be installed to use Empire Web.
 ## Install PHP Curl
 
 ```
-sudo apt-get install php5-curl
+sudo apt-get install php7.0-curl php5-curl
 ```
 
 
@@ -40,10 +31,10 @@ sudo apt-get install php5-curl
 Command Line:
 ```
 root@kali:~# php -i | grep -i curl
-/etc/php5/cli/conf.d/20-curl.ini,
+/etc/php/7.2/cli/conf.d/20-curl.ini,
 curl
 cURL support => enabled
-cURL Information => 7.47.0
+cURL Information => 7.60.0
 ```
 
 PHP Script:
@@ -66,11 +57,10 @@ Stay Calm. Stay Secure. Contribute :)
 # Screenshots
 
 
-![powershell-empire-web-login](https://cloud.githubusercontent.com/assets/5358495/14923483/160144b2-0e5b-11e6-95af-9dfbddd8c126.PNG)
+![empire-web-login](https://user-images.githubusercontent.com/5358495/40887141-8e4953a4-6761-11e8-8cd2-57e7a85d7220.png)
 
+![empire-web-about](https://user-images.githubusercontent.com/5358495/40887146-9aef4294-6761-11e8-944d-c773ddec7563.png)
 
-![powershell-empire-web-about](https://cloud.githubusercontent.com/assets/5358495/14923495/244ab382-0e5b-11e6-8041-205ba35d7ac8.PNG)
+![empire-web-agent-cmd](https://user-images.githubusercontent.com/5358495/40887155-b5143ef4-6761-11e8-997a-438491226548.png)
 
-
-![powershell-empire-web-dashboard](https://cloud.githubusercontent.com/assets/5358495/14923500/298853d6-0e5b-11e6-946e-cdf75e50c366.PNG)
-
+![empire-web-dashboard](https://user-images.githubusercontent.com/5358495/40887153-ad0d1424-6761-11e8-8697-28f774dcc30f.png)

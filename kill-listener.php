@@ -47,7 +47,7 @@ if(!empty($arr_result))
     $empire_listeners .= "<option value=''>--Choose Listener--</option>";
     for($i=0; $i<sizeof($arr_result["listeners"]); $i++)
     {
-        $empire_listeners .= "<option value='".htmlentities($arr_result["listeners"][$i]["ID"])."'>".htmlentities($arr_result["listeners"][$i]["name"])."</option>";
+        $empire_listeners .= "<option value='".htmlentities($arr_result["listeners"][$i]["name"])."'>".htmlentities($arr_result["listeners"][$i]["name"])."</option>";
     }
     $empire_listeners .= "<option value='all'>All Listeners</option>";
 }

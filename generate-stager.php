@@ -34,10 +34,11 @@ if(!empty($arr_result))
         $stager_comments = htmlentities(implode(",", $arr_result["stagers"][$i]["Comments"]));
         $empire_stagers .= '<form role="form" method="post" action="generate-stager.php" class="form-inline">
             <div class="form-group">
-                <label for="stager-name">Stager Name: </label>
                 <input type="text" class="form-control" id="stager-name" placeholder="Stager Name" name="StagerName" value="'.htmlentities($arr_result["stagers"][$i]["Name"]).'" readonly required>
             </div>
-            <button type="submit" id="gen-stager-submit-btn" class="btn btn-success">Generate</button>
+            <div class="form-group">
+                <button type="submit" id="gen-stager-submit-btn" class="btn btn-success">Generate</button>
+            </div>
         <br><br>';
         $empire_stagers .= "<table class='table table-hover table-striped table-bordered'><tr><th>Name</th><td>$stager_name</td></tr><th>Description</th><td>$stager_desc</td></tr><th>Author</th><td>$stager_author</td></tr><th>Comments</th><td>$stager_comments</td></tr></table>";
         $empire_stagers .= "<table class='table table-hover table-striped table-bordered'><thead><tr><th colspan='4'>Stager Options:</th></tr><th>Name</th><th>Description</th><th>Required</th><th>Value</th></tr></thead><tbody>";
