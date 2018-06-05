@@ -10,8 +10,8 @@ if(!empty($arr_result))
 {
     for($i=0; $i<sizeof($arr_result["stagers"]); $i++)
     {
-        $empire_stagers .= "<div class='panel-group'><div class='panel panel-success'>
-                    <div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' href='#collapse$i'>Stager Name: ".htmlentities($arr_result["stagers"][$i]["Name"])."</a></h4></div>
+        $empire_stagers .= "<div class='panel-group panel_heading_class'><div class='panel panel-success'>
+                    <div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' class='module_name_title_class' href='#collapse$i'>".htmlentities($arr_result["stagers"][$i]["Name"])."</a></h4></div>
                     <div id='collapse$i' class='panel-collapse collapse'>
                         <div class='panel-body'>";
         $stager_name = htmlentities($arr_result["stagers"][$i]["Name"]);
@@ -31,7 +31,7 @@ if(!empty($arr_result))
             $empire_stagers .= "</tr>";
         }
         $empire_stagers .= '</tbody></table>';
-        $empire_stagers .= "</div></div></div></div><br>";
+        $empire_stagers .= "</div></div></div><br></div>";
         $count = $i+1;
     }
 }
@@ -45,6 +45,26 @@ else
 <head>
 	<title>Empire: All Stagers</title>
 	<?php @require_once("includes/head-section.php"); ?>
+	<script>
+	    function search_panels()
+	    {
+	        var input = document.getElementById("search_field");
+            var search_term = input.value.toLowerCase();
+            //alert(search_term);
+            for (i=0; i<document.getElementsByClassName('panel_heading_class').length; i++)
+            {
+	            var module_name_title_value = (document.getElementsByClassName('module_name_title_class')[i].innerHTML).toLowerCase();
+	            if ((module_name_title_value).indexOf(search_term) === -1)
+	            {
+		            document.getElementsByClassName('panel_heading_class')[i].style.display = 'None';
+	            }
+	            else
+	            {
+		            document.getElementsByClassName('panel_heading_class')[i].style.display = '';
+	            }
+            }
+	    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -52,7 +72,11 @@ else
         <br>
         <div class="panel-group">
             <div class="panel panel-primary">
-                <div class="panel-heading">All Stagers (<?php echo $count; ?>)</div>
+                <!--<div class="panel-heading">All Stagers (<?php echo $count; ?>)</div>-->
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title pull-left" style="padding-top: 7.5px;">All Stagers (<?php echo $count; ?>)</h4>
+                    <input id="search_field" type="text" class="form-control" placeholder="Search" style="float:right; width: 200px;" onkeyup="search_panels()">
+                </div>
                 <div class="panel-body"><?php echo $empire_stagers; ?></div>
             </div>
         </div>
