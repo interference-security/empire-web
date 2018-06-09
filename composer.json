@@ -1,0 +1,10 @@
+{
+    "name": "interference-security/empire-web",
+    "authors": [
+        {
+            "name": "Interference Security"
+        }
+    ],
+    "require": {
+    }
+}
