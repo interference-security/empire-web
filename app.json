@@ -1,0 +1,6 @@
+{
+  "name": "Empire Web",
+  "description": "PowerShell Empire Web utilizes the Empire REST API Server. It is a web interface for using PowerShell Empire.",
+  "repository": "https://github.com/interference-security/empire-web.git",
+  "keywords": ["php", "powershell", "empire", "web", "heroku"]
+}
