@@ -1,3 +1,7 @@
+# Archived and Read Only
+
+There are a lot more better options available now. Due to which this repository has been archived and marked as read-only.
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/interference-security/empire-web)
 
 # PowerShell Empire Web
